@@ -31,6 +31,8 @@
 #define RADIOLIB_LR2021_CMD_GET_V_BAT                           (0x0124)
 #define RADIOLIB_LR2021_CMD_GET_TEMP                            (0x0125)
 #define RADIOLIB_LR2021_CMD_SET_EOL_CONFIG                      (0x0130)
+#define RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG                   (0x0132)
+#define RADIOLIB_LR2021_CMD_SET_NTC_PARAMS                      (0x0133)
 #define RADIOLIB_LR2021_CMD_GET_RANDOM_NUMBER                   (0x0126)
 #define RADIOLIB_LR2021_CMD_GET_STATUS                          (0x0100)
 #define RADIOLIB_LR2021_CMD_GET_VERSION                         (0x0101)
@@ -251,6 +253,11 @@
 #define RADIOLIB_LR2021_TEMP_SOURCE_XOSC                        (0x01UL << 4)   //  4     4                         sensor near XOSC
 #define RADIOLIB_LR2021_TEMP_FORMAT_RAW                         (0x00UL << 3)   //  3     3     readout format: raw
 #define RADIOLIB_LR2021_TEMP_FORMAT_DEG_C                       (0x01UL << 3)   //  3     3                     degrees Celsius
+
+// RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG
+#define RADIOLIB_LR2021_TEMP_COMP_DISABLED                       (0x00UL << 0)   //  1     0     temperature compensation: disabled
+#define RADIOLIB_LR2021_TEMP_COMP_RELATIVE                       (0x01UL << 0)   //  1     0                           relative
+#define RADIOLIB_LR2021_TEMP_COMP_ABSOLUTE                       (0x02UL << 0)   //  1     0                           absolute
 
 // RADIOLIB_LR2021_CMD_SET_EOL_CONFIG
 #define RADIOLIB_LR2021_EOL_TRIM_1V6                            (0x00UL << 1)   //  3     1     EoL trigger threshold: 1.60 V

@@ -187,6 +187,19 @@ int16_t LR2021::setEolConfig(bool enable, uint8_t trim) {
   return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_EOL_CONFIG, true, buff, sizeof(buff)));
 }
 
+int16_t LR2021::setTempCompCfg(bool ntcEnable, uint8_t compMode) {
+  uint8_t buff[] = { (uint8_t)(((uint8_t)ntcEnable << 2) | (compMode & 0x03)) };
+  return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG, true, buff, sizeof(buff)));
+}
+
+int16_t LR2021::setNtcParams(uint16_t resistanceRatio, uint16_t beta, uint8_t delay) {
+  uint8_t buff[] = {
+    (uint8_t)((resistanceRatio >> 8) & 0x03), (uint8_t)(resistanceRatio & 0xFF),
+    (uint8_t)((beta >> 8) & 0x0F), (uint8_t)(beta & 0xFF), delay,
+  };
+  return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_NTC_PARAMS, true, buff, sizeof(buff)));
+}
+
 int16_t LR2021::getRandomNumber(uint32_t* rnd) {
   uint8_t buff[4] = { 0 };
   int16_t state = this->SPIcommand(RADIOLIB_LR2021_CMD_GET_RANDOM_NUMBER, false, buff, sizeof(buff));

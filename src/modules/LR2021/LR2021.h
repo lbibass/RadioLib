@@ -949,6 +949,8 @@ class LR2021: public LRxxxx {
     int16_t getVbat(uint8_t resolution, uint16_t* vbat);
     int16_t getTemp(uint8_t source, uint8_t resolution, float* temp);
     int16_t setEolConfig(bool enable, uint8_t trim);
+    int16_t setTempCompCfg(bool ntcEnable, uint8_t compMode);
+    int16_t setNtcParams(uint16_t resistanceRatio, uint16_t beta, uint8_t delay);
     int16_t getRandomNumber(uint32_t* rnd);
     int16_t getVersion(uint8_t* major, uint8_t* minor);
     int16_t clearErrors(void);
