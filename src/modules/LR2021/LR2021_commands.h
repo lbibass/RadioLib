@@ -54,6 +54,8 @@
 #define RADIOLIB_LR2021_CMD_SET_TCXO_MODE                       (0x0120)
 #define RADIOLIB_LR2021_CMD_ACTIVATE_PRAM                       (0x012D)
 #define RADIOLIB_LR2021_CMD_SET_XOSC_CP_TRIM                    (0x0131)
+#define RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG                   (0x0132)
+#define RADIOLIB_LR2021_CMD_SET_NTC_PARAMS                      (0x0133)
 #define RADIOLIB_LR2021_CMD_SET_RF_FREQUENCY                    (0x0200)
 #define RADIOLIB_LR2021_CMD_SET_RX_PATH                         (0x0201)
 #define RADIOLIB_LR2021_CMD_GET_RSSI_INST                       (0x020B)
@@ -144,6 +146,11 @@
 #define RADIOLIB_LR2021_CMD_SET_OOK_DETECTOR                    (0x0288)
 #define RADIOLIB_LR2021_CMD_SET_OOK_WHITENING_PARAMS            (0x0289)
 #define RADIOLIB_LR2021_CMD_SET_TX_TEST_MODE                    (0x020E)
+
+// RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG
+#define RADIOLIB_LR2021_TEMP_COMP_DISABLED                      (0x00)
+#define RADIOLIB_LR2021_TEMP_COMP_RELATIVE                     (0x01)
+#define RADIOLIB_LR2021_TEMP_COMP_ABSOLUTE                     (0x02)
 
 // RADIOLIB_LR2021_CMD_SET_DIO_IRQ_CONFIG
 #define RADIOLIB_LR2021_IRQ_RX_FIFO                             (0x01UL << 0)   //  31    0     interrupt: Rx FIFO threshold reached

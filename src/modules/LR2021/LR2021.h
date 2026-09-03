@@ -548,6 +548,23 @@ class LR2021: public LRxxxx {
     int16_t setTCXO(float voltage, uint32_t delay = 1000000);
 
     /*!
+      \brief Configures crystal temperature compensation.
+      \param ntc Enable the external NTC sensor. If false, the internal Cfine sensor is used.
+      \param mode Compensation mode, one of RADIOLIB_LR2021_TEMP_COMP_* values.
+      \returns \ref status_codes
+    */
+    int16_t setTempCompCfg(bool ntc, uint8_t mode);
+
+    /*!
+      \brief Configures the external NTC used for crystal temperature compensation.
+      \param resistanceRatio Ratio of the bias resistor to the NTC resistance at 25 degrees C.
+      \param beta NTC beta coefficient in kelvin.
+      \param delay First-order filter delay. The reference design uses 5 (100 ms).
+      \returns \ref status_codes
+    */
+    int16_t setNtcParams(uint16_t resistanceRatio = 1, uint16_t beta = 4250, uint8_t delay = 5);
+
+    /*!
       \brief Sets CRC configuration.
       \param len CRC length in bytes, Allowed values are 1 or 2, set to 0 to disable CRC.
       \param initial Initial CRC value. GFSK only. Defaults to 0x1D0F (CCITT CRC).
@@ -948,6 +965,8 @@ class LR2021: public LRxxxx {
     int16_t calibrateFrontEnd(const uint16_t freq[3]);
     int16_t getVbat(uint8_t resolution, uint16_t* vbat);
     int16_t getTemp(uint8_t source, uint8_t resolution, float* temp);
+    int16_t setTempCompCfg(bool ntc, uint8_t mode);
+    int16_t setNtcParams(uint16_t resistanceRatio, uint16_t beta, uint8_t delay);
     int16_t setEolConfig(bool enable, uint8_t trim);
     int16_t getRandomNumber(uint32_t* rnd);
     int16_t getVersion(uint8_t* major, uint8_t* minor);

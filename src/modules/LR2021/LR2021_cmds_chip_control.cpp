@@ -322,6 +322,19 @@ int16_t LR2021::setXoscCpTrim(uint8_t xta, uint8_t xtb, uint8_t startTime) {
   return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_XOSC_CP_TRIM, true, buff, sizeof(buff)));
 }
 
+int16_t LR2021::setTempCompCfg(bool ntc, uint8_t mode) {
+  uint8_t buff[] = { (uint8_t)ntc, (uint8_t)(mode & 0x03) };
+  return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG, true, buff, sizeof(buff)));
+}
+
+int16_t LR2021::setNtcParams(uint16_t resistanceRatio, uint16_t beta, uint8_t delay) {
+  uint8_t buff[] = {
+    (uint8_t)((resistanceRatio >> 8) & 0x03), (uint8_t)(resistanceRatio & 0xFF),
+    (uint8_t)((beta >> 8) & 0x0F), (uint8_t)(beta & 0xFF), delay,
+  };
+  return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_NTC_PARAMS, true, buff, sizeof(buff)));
+}
+
 int16_t LR2021::activatePram(void) {
   uint8_t buff[] = { RADIOLIB_LR2021_CMD_NOP };
   return(this->SPIcommand(RADIOLIB_LR2021_CMD_ACTIVATE_PRAM, true, buff, sizeof(buff)));
