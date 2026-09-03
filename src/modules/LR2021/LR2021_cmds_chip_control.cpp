@@ -188,7 +188,7 @@ int16_t LR2021::setEolConfig(bool enable, uint8_t trim) {
 }
 
 int16_t LR2021::setTempCompCfg(bool ntcEnable, uint8_t compMode) {
-  uint8_t buff[] = { (uint8_t)(((uint8_t)ntcEnable << 2) | (compMode & 0x03)) };
+  uint8_t buff[] = { (uint8_t)(((uint8_t)ntcEnable << 2) | (compMode & 0x02)) };
   return(this->SPIcommand(RADIOLIB_LR2021_CMD_SET_TEMP_COMP_CFG, true, buff, sizeof(buff)));
 }
 
